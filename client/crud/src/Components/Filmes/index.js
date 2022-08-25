@@ -2,6 +2,8 @@ import React, {Component}  from 'react';
 import './style.css';
 import {AiFillDelete} from 'react-icons/ai';
 import {FiEdit} from 'react-icons/fi';
+import {Redirect, Route} from 'react-router';
+ import Editar from '../Editar';
 
 class Filmes extends Component {
     
@@ -10,13 +12,19 @@ class Filmes extends Component {
 
         this.state = {
             api: "http://localhost:4000/filmes",
-            filmes: []
+            filmes: [],
+            redirectTo: false,
+            idEdit: ""
         }
 
         this.listar = this.listar.bind(this);
         this.deletar = this.deletar.bind(this);
+        this.editar = this.editar.bind(this);
     }
 
+    componentDidMount() {
+        this.listar();
+    }
 
     async listar () {
         
@@ -40,14 +48,18 @@ class Filmes extends Component {
         this.listar()
     }
 
+    editar(id) {
+        this.state.redirectTo = "editar";
+        this.state.idEdit = id;
+    }
     
 
     render() {
-        
+
         return (
             <div className='filmesList'>
                 <h1>Lista de Filmes</h1>
-                <button onClick={() => this.listar()}>listar</button>
+                <br></br>
                 <table border="1">
                 
                     <thead>
@@ -66,7 +78,7 @@ class Filmes extends Component {
                         <td> {filme.title} </td>
                         <td> {filme.year} </td>
                         <td> {filme.description} </td>
-                        <td><FiEdit/></td>
+                        <td><FiEdit onClick={() => this.editar(filme.id)}/></td>
                         <td><AiFillDelete onClick={() => this.deletar(filme.id)}/></td>
                         </tbody>
                     );
@@ -76,7 +88,7 @@ class Filmes extends Component {
                 </table>
             </div>
         );
-
+        
     }
 }
 

@@ -1,8 +1,9 @@
 .navbar {
     display: flex;
-    background-color: aquamarine;
+    background-color: blueviolet;
     width: 100%;
     justify-content: center;
+    padding: 10px 0;
 }
 .navbar ul {
     display: flex;
