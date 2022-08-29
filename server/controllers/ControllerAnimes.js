@@ -40,6 +40,8 @@ router.post("/animes", (req, res) => {
 
 });
 
+//DELETA ANIME
+
 router.delete("/animes/:id", async (req, res) => {
 
     let id = req.params.id;

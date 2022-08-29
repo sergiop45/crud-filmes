@@ -14,14 +14,6 @@ const Filmes = connection.define("filmes", {
     description: {
         type: Sequelize.STRING,
         allowNull: false
-    },
-    linkVideo: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    imagem: {
-        type: Sequelize.STRING,
-        allowNull: false
     }
 });
 

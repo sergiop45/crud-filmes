@@ -5,7 +5,7 @@ const connection = require("./database");
 const ControllerFilmes = require("./controllers/ControllerFilmes");
 const ControllerAnimes = require("./controllers/ControllerAnimes");
 const cors = require("cors");
-const router = express.Router();
+const ControllerCategoria = require("./controllers/ControllerCategoria");
 
 connection.authenticate().then(console.log("Conexao com Banco de Dados Realizada!"))
 .catch((err) => {
@@ -17,6 +17,8 @@ app.use(cors());
 
 app.use("/", ControllerFilmes);
 app.use("/", ControllerAnimes);
+app.use("/", ControllerCategoria);
+
 
 app.get("/", (req, res) => {
     res.status(200).json({message: "Bem vindo ao BackEnd do hanmaFilmes"})
