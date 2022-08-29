@@ -1,8 +1,7 @@
 const Sequelize = require("sequelize");
-const connection = require("../database");
+const connection = require("../database/index");
 
-
-const Filmes = connection.define("filmes", {
+const Animes = connection.define("animes", {
     title: {
         type: Sequelize.STRING,
         allowNull: false
@@ -25,7 +24,10 @@ const Filmes = connection.define("filmes", {
     }
 });
 
-Filmes.sync({force: false}).then(console.log("Tabela Filmes Criada!"))
-.catch((err) => console.log("Erro ao criar tabela: " + err));
+Animes.sync({ force: false })
+.then(console.log("Tabela Anime Sincronizada!"))
+.catch((err) => {
+    console.log("Erro tabela anime: " + err);
+});
 
-module.exports = Filmes;
+module.exports = Animes;
